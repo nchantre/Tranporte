@@ -19,6 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SERVICES", "SERVICES", "{B6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WbApiEmpleado", "WbApiEmpleado\WbApiEmpleado.csproj", "{B26CD7F4-2ADA-4FB1-AD65-A9355D1E61E0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentacion", "Presentacion", "{94445B7E-72C6-46B5-8972-3AF5275330BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrasnporteAdmin", "TrasnporteAdmin\TrasnporteAdmin.csproj", "{8BB3C780-A2E0-4C8B-83A8-B4DC71B45D3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +45,10 @@ Global
 		{B26CD7F4-2ADA-4FB1-AD65-A9355D1E61E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B26CD7F4-2ADA-4FB1-AD65-A9355D1E61E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B26CD7F4-2ADA-4FB1-AD65-A9355D1E61E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BB3C780-A2E0-4C8B-83A8-B4DC71B45D3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BB3C780-A2E0-4C8B-83A8-B4DC71B45D3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BB3C780-A2E0-4C8B-83A8-B4DC71B45D3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BB3C780-A2E0-4C8B-83A8-B4DC71B45D3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +58,7 @@ Global
 		{8783286F-9A84-4D89-8190-BCB22E6B8715} = {1AC6CBB4-20F4-4515-B762-AE41DC047198}
 		{B8CB4BBA-106A-4945-95C5-14A64AADBA7B} = {967BEF43-A47A-4BA9-95C3-0EF502FDCF28}
 		{B26CD7F4-2ADA-4FB1-AD65-A9355D1E61E0} = {B69FC722-EB0A-4FF3-AFFF-196B2432E32A}
+		{8BB3C780-A2E0-4C8B-83A8-B4DC71B45D3E} = {94445B7E-72C6-46B5-8972-3AF5275330BD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BC7C20B-F8A6-4391-B5A1-9E846B141A61}

@@ -1,73 +1,95 @@
-﻿using Microsoft.Data.SqlClient;
+﻿
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TransporteDAL.CONTRATOS;
 
 namespace TransporteDAL.BD
 {
-    public class ConexionBD
+    public class ConexionBD : IConexion
     {
         /// <summary>
         /// Clase para la conexion a la bd supcriptionBD
         /// </summary>
         /// 
-        protected SqlConnection Conn;
-        //private readonly IConfiguration _configuration;
+        private SqlConnection Conn;
+        private readonly IConfiguration _configuration;
+  
 
-        //public ConexionBD(
-        //    IConfiguration configuration = null
-        //    )
-        //{
-        //_configuration = configuration;
 
-        //}
+        public ConexionBD(
+            IConfiguration configuration = null
+            )
+        {
+            _configuration = configuration;
+         
 
-        //protected void conectar() {
-        //    try
-        //    {
-        //        Conn = new SqlConnection("Server=DESKTOP-FT1VQS5\\chan;DataBase=supcriptionDB;Integrated Security=true");
-        //        Conn.Open();
-
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        throw;
-        //    }
-        //    finally
-        //    {
-
-        //    }
-        
-        //}
-
+        }
 
 
         #region CadenaConexion
-         //  private SqlConnection Con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConStr"].ConnectionString);
+        //  private SqlConnection Con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConStr"].ConnectionString);
+        //private string connectionString = _configuration.GetConnectionString("ConnDaviReca");
 
-        private SqlConnection Con = new SqlConnection("Server=DESKTOP-FT1VQS5\\chan;DataBase=supcriptionDB;Integrated Security=true");
+        // private SqlConnection Con = new SqlConnection(message);
         #endregion
 
         #region MethodOpen 
-        public SqlConnection OpenConexion()
-        {
-            if (Con.State == ConnectionState.Closed)
-                Con.Open();
-            return Con;
-        }
+        //public SqlConnection OpenConexion()
+        //{
+        //    string pro = _configuration.GetConnectionString("");
+        //    if (Con.State == ConnectionState.Closed)
+        //        Con.Open();
+        //    return Con;
+        //}
         #endregion
 
+       
+
+        public SqlConnection OpenConexion()
+        {
+            try
+            {
+                string connectionString = _configuration.GetConnectionString("DefaultConnection");
+                Conn = new SqlConnection(connectionString);
+                Conn.Open();
+                return Conn;
+
+            }
+            catch (Exception )
+            {
+                throw;
+            }
+        }
+
+   
+
         #region MethodClose
+        //public SqlConnection CloseConexion()
+        //{
+        //    if (Con.State == ConnectionState.Open)
+        //        Con.Close();
+        //    return Con;
+        //}
         public SqlConnection CloseConexion()
         {
-            if (Con.State == ConnectionState.Open)
-                Con.Close();
-            return Con;
+            try
+            {
+                string connectionString = _configuration.GetConnectionString("DefaultConnection");
+                Conn = new SqlConnection(connectionString);
+                Conn.Close();
+                return Conn;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         #endregion
 

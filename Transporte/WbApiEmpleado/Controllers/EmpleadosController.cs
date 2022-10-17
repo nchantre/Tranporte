@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TransporteDAL.CONTRATOS;
+using TransporteModel.Model;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,6 +14,28 @@ namespace WbApiEmpleado.Controllers
     [ApiController]
     public class EmpleadosController : ControllerBase
     {
+        #region Properties
+        private readonly IEmpleado _empleado;
+   
+        #endregion
+
+        #region Constructor
+        public EmpleadosController( IEmpleado empleado)
+        {
+            try
+            {
+                _empleado = empleado;
+
+            }
+            catch (Exception ex)
+            {
+                //ex.Message("error");
+            }
+        }
+        #endregion
+
+
+
         // GET: api/<EmpleadosController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -19,12 +43,22 @@ namespace WbApiEmpleado.Controllers
             return new string[] { "value1", "value2" };
         }
 
+      
+
         // GET api/<EmpleadosController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public  ActionResult<Empleado> GetEmpleado(int id)
         {
-            return "value";
+            var categoria =  _empleado.GetAllEmpleadoId(id);
+
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+
+            return categoria;
         }
+
 
         // POST api/<EmpleadosController>
         [HttpPost]
