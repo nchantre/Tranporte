@@ -38,44 +38,63 @@ namespace WbApiEmpleado.Controllers
 
         // GET: api/<EmpleadosController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Empleado> Get()
         {
-            return new string[] { "value1", "value2" };
+            var empleado = _empleado.GetAllEmpleado();
+
+            if (empleado == null)
+            {
+                //return NotFound();
+            }
+
+            return empleado;
+
         }
 
       
 
         // GET api/<EmpleadosController>/5
         [HttpGet("{id}")]
-        public  ActionResult<Empleado> GetEmpleado(int id)
+        public  ActionResult<Empleado> GetEmpleadoId(int id)
         {
-            var categoria =  _empleado.GetAllEmpleadoId(id);
+            var empleado =  _empleado.GetAllEmpleadoId(id);
 
-            if (categoria == null)
+            if (empleado == null)
             {
                 return NotFound();
             }
 
-            return categoria;
+            return empleado;
         }
 
 
         // POST api/<EmpleadosController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void InsertEmpleado([FromBody] Empleado model)
         {
+            _empleado.AddEmpleado(model);
+          
         }
+
 
         // PUT api/<EmpleadosController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
+        [HttpPut("{idEmpleado}")]
+        public void Put(int idEmpleado, [FromBody] Empleado model) {
+
+            model.IdEmpleado = idEmpleado;
+            _empleado.UpEmpleado(model);
+
         }
 
+
         // DELETE api/<EmpleadosController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{idEmpleado}")]
+        public void Delete(int idEmpleado)
         {
+            Empleado model = new Empleado();
+
+            model.IdEmpleado = idEmpleado;
+            _empleado.DeleteEmpleado(model);
         }
     }
 }

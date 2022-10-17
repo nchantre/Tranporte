@@ -79,123 +79,125 @@ namespace TransporteDAL.DAL
         }
         #endregion
 
-        //#region InsertEmpleado
-        //public string AddEmpleado()
-        //{
-        //    string mensaje = "";
-        //    try
-        //    {
-        //        using (SqlCommand comando = new SqlCommand())
-        //        {
-        //            comando.Connection = _conexion.OpenConexion();
-        //            comando.CommandText = "spCompanyInsert";
-        //            comando.CommandType = CommandType.StoredProcedure;
-        //            comando.Parameters.Add("@Origen", SqlDbType.VarChar, 50).Value = Convert.ToString(_companyModels.Origen);
-        //            comando.Parameters.Add("@TiempoTranscurrido", SqlDbType.Int).Value = _companyModels.TiempoTranscurrido;
-        //            comando.Parameters.Add("@NombrePasajero", SqlDbType.VarChar, 70).Value = Convert.ToString(_companyModels.NombrePasajero); ;
-        //            comando.Parameters.Add("@PlacaVehiculo", SqlDbType.VarChar, 70).Value = Convert.ToString(_companyModels.PlacaVehiculo);
-        //            comando.Parameters.Add("@HoraViaje", SqlDbType.VarChar, 70).Value = Convert.ToString(_companyModels.HoraViaje);
-        //            comando.ExecuteNonQuery();
-        //            comando.Parameters.Clear();
-        //            _conexion.CloseConexion();
+        #region InsertEmpleado
+        public string AddEmpleado(Empleado entity)
+        {
+            //Empleado entity = new Empleado();
+            string mensaje = "";
+            try
+            {
+                using (SqlCommand comando = new SqlCommand())
+                {
+                    comando.Connection = _conexion.OpenConexion();
+                    comando.CommandText = "spEmpleadoInsert";
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.Add("@Origen", SqlDbType.VarChar, 50).Value = Convert.ToString(entity.Origen);
+                    comando.Parameters.Add("@TiempoTranscurrido", SqlDbType.Int).Value = entity.TiempoTranscurrido;
+                    comando.Parameters.Add("@NombrePasajero", SqlDbType.VarChar, 70).Value = Convert.ToString(entity.NombrePasajero); ;
+                    comando.Parameters.Add("@PlacaVehiculo", SqlDbType.VarChar, 70).Value = Convert.ToString(entity.PlacaVehiculo);
+                    comando.Parameters.Add("@HoraViaje", SqlDbType.VarChar, 70).Value = Convert.ToString(entity.HoraViaje);
+                    comando.ExecuteNonQuery();
+                    comando.Parameters.Clear();
+                    _conexion.CloseConexion();
 
-        //        }
+                }
 
-        //    }
-        //    catch (FaultException fex)
-        //    {
-        //        mensaje = "Error" + fex;
-        //    }
+            }
+            catch (FaultException fex)
+            {
+                mensaje = "Error" + fex;
+            }
 
-        //    return mensaje;
-        //}
+            return mensaje;
+        }
 
-        //#endregion
+        #endregion
 
-        //#region EditEmpleado
-        //public void UpEmpleado()
-        //{
+        #region EditEmpleado
+        public void UpEmpleado(Empleado entity)
+        {
 
-        //    using (SqlCommand comando = new SqlCommand())
-        //    {
+            using (SqlCommand comando = new SqlCommand())
+            {
 
-        //        comando.Connection = _conexion.OpenConexion();
-        //        comando.CommandText = "spCompanyUpdate";
-        //        comando.CommandType = CommandType.StoredProcedure;
-        //        comando.Parameters.Add("@Origen", SqlDbType.VarChar,70).Value = Convert.ToString(_companyModels.Origen);
-        //        comando.Parameters.Add("@TiempoTranscurrido", SqlDbType.Int).Value = _companyModels.TiempoTranscurrido;
-        //        comando.Parameters.Add("@NombrePasajero", SqlDbType.VarChar,70).Value = Convert.ToString(_companyModels.NombrePasajero);
-        //        comando.Parameters.Add("@PlacaVehiculo", SqlDbType.VarChar, 70).Value = Convert.ToString(_companyModels.PlacaVehiculo); ;
-        //        comando.Parameters.Add("@HoraViaje", SqlDbType.VarChar, 70).Value = Convert.ToString(_companyModels.HoraViaje);
-        //        comando.ExecuteNonQuery();
-        //        comando.Parameters.Clear();
-        //        _conexion.CloseConexion();
-
-
-        //    }
-
-        //}
-
-        //#endregion
-
-        //#region DeleteEmpleado
-        //public void DeleteCompany(int EmpleadoId)
-        //{
-        //    using (SqlCommand comando = new SqlCommand())
-        //    {
-        //        comando.Connection = _conexion.OpenConexion();
-        //        comando.CommandText = "spCompanyDelete";
-        //        comando.CommandType = CommandType.StoredProcedure;
-        //        comando.Parameters.Add("@PrmCompanyId", SqlDbType.Int).Value = (EmpleadoId);
-        //        comando.ExecuteNonQuery();
-        //        comando.Parameters.Clear();
-        //        _conexion.CloseConexion();
-
-        //    }
+                comando.Connection = _conexion.OpenConexion();
+                comando.CommandText = "spEmpleadoUpdate";
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@IdEmpleado", SqlDbType.Int).Value = (entity.IdEmpleado);
+                comando.Parameters.Add("@Origen", SqlDbType.VarChar, 70).Value = Convert.ToString(entity.Origen);
+                comando.Parameters.Add("@TiempoTranscurrido", SqlDbType.Int).Value = entity.TiempoTranscurrido;
+                comando.Parameters.Add("@NombrePasajero", SqlDbType.VarChar, 70).Value = Convert.ToString(entity.NombrePasajero);
+                comando.Parameters.Add("@PlacaVehiculo", SqlDbType.VarChar, 70).Value = Convert.ToString(entity.PlacaVehiculo); ;
+                comando.Parameters.Add("@HoraViaje", SqlDbType.VarChar, 70).Value = Convert.ToString(entity.HoraViaje);
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                _conexion.CloseConexion();
 
 
-        //}
+            }
 
-        //#endregion
+        }
 
-        //#region GetAllEmpleado
-        //public List<Empleado> GetAllEmpleado()
-        //{
+        #endregion
+
+        #region DeleteEmpleado
+        public void DeleteEmpleado(Empleado entity)
+        {
+            using (SqlCommand comando = new SqlCommand())
+            {
+                comando.Connection = _conexion.OpenConexion();
+                comando.CommandText = "spEmpleadoDelete";
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@IdEmpleado", SqlDbType.Int).Value = (entity.IdEmpleado);
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+                _conexion.CloseConexion();
+
+            }
 
 
-        //    using (SqlCommand comando = new SqlCommand())
-        //    {
-        //        List<Empleado> items = new List<Empleado>();
+        }
 
-        //        comando.Connection = _conexion.OpenConexion();
-        //        comando.CommandText = "spCompanyAll";
-        //        comando.CommandType = CommandType.StoredProcedure;
-        //        using (SqlDataReader read = comando.ExecuteReader())
-        //        {
-        //            if (read.HasRows)
-        //            {
+        #endregion
 
-        //                while (read.Read())
-        //                {
-        //                    // CompanyModels entity = new CompanyModels();
-        //                    _companyModels.IdEmpleado = Convert.ToInt32(read["IdEmpleado"]);
-        //                    _companyModels.Origen = read["Origen"].ToString();
-        //                    _companyModels.TiempoTranscurrido = Convert.ToInt32(read["TiempoTranscurrido"]);
-        //                    _companyModels.NombrePasajero = read["NombrePasajero"].ToString();
-        //                    _companyModels.PlacaVehiculo = read["PlacaVehiculo"].ToString();
-        //                    _companyModels.HoraViaje = read["HoraViaje"].ToString();
-        //                    items.Add(_companyModels);
-        //                }
+        #region GetAllEmpleado
+        public List<Empleado> GetAllEmpleado()
+        {
 
-        //            }
-        //        }
-        //        // tb.Load(read);
-        //        _conexion.CloseConexion();
-        //        return items;
-        //    }
 
-        //}
-        //#endregion
+            using (SqlCommand comando = new SqlCommand())
+            {
+                List<Empleado> items = new List<Empleado>();
+
+                comando.Connection = _conexion.OpenConexion();
+                comando.CommandText = "spEmpleadoAll";
+                comando.CommandType = CommandType.StoredProcedure;
+                using (SqlDataReader read = comando.ExecuteReader())
+                {
+                    if (read.HasRows)
+                    {
+
+                        while (read.Read())
+                        {
+                             Empleado entity = new Empleado();
+                            entity.IdEmpleado = Convert.ToInt32(read["IdEmpleado"]);
+                            entity.Origen = read["Origen"].ToString();
+                            entity.TiempoTranscurrido = Convert.ToInt32(read["TiempoTranscurrido"]);
+                            entity.NombrePasajero = read["NombrePasajero"].ToString();
+                            entity.PlacaVehiculo = read["PlacaVehiculo"].ToString();
+                            entity.HoraViaje = read["HoraViaje"].ToString();
+                            items.Add(entity);
+                        }
+
+                    }
+                }
+                // tb.Load(read);
+                _conexion.CloseConexion();
+                return items;
+            }
+
+        }
+        #endregion
 
 
     }

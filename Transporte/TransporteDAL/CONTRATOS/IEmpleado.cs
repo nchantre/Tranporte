@@ -12,10 +12,10 @@ namespace TransporteDAL.CONTRATOS
     {
 
          Empleado GetAllEmpleadoId(int EmpleadoId);
-        //string AddEmpleado();
-        //void UpEmpleado();
-        //void DeleteCompany(int EmpleadoId);
-        //List<Empleado> GetAllEmpleado();
+         string AddEmpleado(Empleado entity);
+         void UpEmpleado( Empleado entity);
+         void DeleteEmpleado(Empleado entity);
+         List<Empleado> GetAllEmpleado();
 
     }
 }
