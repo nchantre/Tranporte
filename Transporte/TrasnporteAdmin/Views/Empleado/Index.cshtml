@@ -1,0 +1,65 @@
+﻿@model IEnumerable<TrasnporteAdmin.Models.EmpleadoViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmpleado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Origen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TiempoTranscurrido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombrePasajero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacaVehiculo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraViaje)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEmpleado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Origen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TiempoTranscurrido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombrePasajero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlacaVehiculo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraViaje)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
