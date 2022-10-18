@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentacion", "Presentacio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrasnporteAdmin", "TrasnporteAdmin\TrasnporteAdmin.csproj", "{8BB3C780-A2E0-4C8B-83A8-B4DC71B45D3E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BD", "BD", "{BE4123D7-1DD7-4744-82A5-4BACE85FA238}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
