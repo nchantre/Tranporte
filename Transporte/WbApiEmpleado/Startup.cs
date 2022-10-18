@@ -32,6 +32,8 @@ namespace WbApiEmpleado
             services.AddTransient<IConexion, ConexionBD>();
             services.AddTransient<IEmpleado, EmpleadoDAL>();
 
+
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

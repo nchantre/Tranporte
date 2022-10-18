@@ -58,57 +58,84 @@ namespace TrasnporteAdmin.Controllers
         }
         #endregion
 
-
-
-
-        public ActionResult Details(int id)
+        #region Detalle
+        public async Task<IActionResult> Details(int id)
         {
 
-            return View();
-        }
+            EmpleadoViewModel obj = new EmpleadoViewModel();
 
-       
+            if (id != 0)
+            {      
+                obj = await _servicioApi.Obtener(id);
+            }
+
+            return View(obj);
+        }
+        #endregion
+
 
         // GET: EmpleadoController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult>  Edit(int id)
         {
-            return View();
+            EmpleadoViewModel obj = new EmpleadoViewModel();
+            if (id != 0)
+            {
+                obj = await _servicioApi.Obtener(id);
+            }
+            return View(obj);
         }
 
         // POST: EmpleadoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(EmpleadoViewModel model)
         {
+            bool respuesta;
             try
             {
-                return RedirectToAction(nameof(Index));
+                respuesta = await _servicioApi.Editar(model);
+
             }
             catch
             {
                 return View();
             }
+            if (respuesta)
+                return RedirectToAction("Index");
+            else
+                return NoContent();
         }
 
         // GET: EmpleadoController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            return View();
+            EmpleadoViewModel obj = new EmpleadoViewModel();
+            if (id != 0)
+            {
+                obj = await _servicioApi.Obtener(id);
+            }
+            return View(obj);
         }
 
         // POST: EmpleadoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> Delete(EmpleadoViewModel model)
         {
+            bool respuesta;
             try
             {
-                return RedirectToAction(nameof(Index));
+                respuesta = await _servicioApi.Eliminar(model.IdEmpleado);
+
             }
             catch
             {
                 return View();
             }
+            if (respuesta)
+                return RedirectToAction("Index");
+            else
+                return NoContent();
         }
     }
 }

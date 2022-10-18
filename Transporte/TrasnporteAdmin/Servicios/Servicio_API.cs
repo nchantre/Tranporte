@@ -42,26 +42,19 @@ namespace TrasnporteAdmin.Servicios
             return lista;
         }
 
-
-
         public async Task<EmpleadoViewModel> Obtener(int idProducto)
         {
             EmpleadoViewModel objeto = new EmpleadoViewModel();
-
-            //await Autenticar();
-
-
             var cliente = new HttpClient();
             cliente.BaseAddress = new Uri(_baseUrl);
-            //cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
-            var response = await cliente.GetAsync($"api/Producto/Obtener/{idProducto}");
+            var response = await cliente.GetAsync($"api/Empleados/{idProducto}");
 
             if (response.IsSuccessStatusCode)
             {
 
                 var json_respuesta = await response.Content.ReadAsStringAsync();
-                var resultado = JsonConvert.DeserializeObject<ResultadoApi>(json_respuesta);
-                objeto = resultado.objeto;
+                return JsonConvert.DeserializeObject<EmpleadoViewModel>(json_respuesta);
+                
             }
 
             return objeto;
@@ -73,9 +66,7 @@ namespace TrasnporteAdmin.Servicios
 
             var cliente = new HttpClient();
             cliente.BaseAddress = new Uri(_baseUrl);
-
             var content = new StringContent(JsonConvert.SerializeObject(objeto), Encoding.UTF8, "application/json");
-
             var response = await cliente.PostAsync("api/Empleados", content);
 
             if (response.IsSuccessStatusCode)
@@ -89,17 +80,11 @@ namespace TrasnporteAdmin.Servicios
         public async Task<bool> Editar(EmpleadoViewModel objeto)
         {
             bool respuesta = false;
-
-            //await Autenticar();
-
-
             var cliente = new HttpClient();
             cliente.BaseAddress = new Uri(_baseUrl);
-            //cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
-
             var content = new StringContent(JsonConvert.SerializeObject(objeto), Encoding.UTF8, "application/json");
 
-            var response = await cliente.PutAsync("api/Producto/Editar/", content);
+            var response = await cliente.PutAsync($"api/Empleados/{objeto.IdEmpleado}", content);
 
             if (response.IsSuccessStatusCode)
             {
@@ -112,16 +97,9 @@ namespace TrasnporteAdmin.Servicios
         public async Task<bool> Eliminar(int idProducto)
         {
             bool respuesta = false;
-
-           // await Autenticar();
-
-
             var cliente = new HttpClient();
             cliente.BaseAddress = new Uri(_baseUrl);
-           // cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
-
-
-            var response = await cliente.DeleteAsync($"api/Producto/Eliminar/{idProducto}");
+            var response = await cliente.DeleteAsync($"api/Empleados/{idProducto}");
 
             if (response.IsSuccessStatusCode)
             {
