@@ -9,21 +9,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransporteDAL", "Transporte
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MODEL", "MODEL", "{1AC6CBB4-20F4-4515-B762-AE41DC047198}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransporteModel", "TransporteModel\TransporteModel.csproj", "{8783286F-9A84-4D89-8190-BCB22E6B8715}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransporteModel", "TransporteModel\TransporteModel.csproj", "{8783286F-9A84-4D89-8190-BCB22E6B8715}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UTILITIES", "UTILITIES", "{967BEF43-A47A-4BA9-95C3-0EF502FDCF28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransporteUtilities", "TransporteUtilities\TransporteUtilities.csproj", "{B8CB4BBA-106A-4945-95C5-14A64AADBA7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransporteUtilities", "TransporteUtilities\TransporteUtilities.csproj", "{B8CB4BBA-106A-4945-95C5-14A64AADBA7B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SERVICES", "SERVICES", "{B69FC722-EB0A-4FF3-AFFF-196B2432E32A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WbApiEmpleado", "WbApiEmpleado\WbApiEmpleado.csproj", "{B26CD7F4-2ADA-4FB1-AD65-A9355D1E61E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WbApiEmpleado", "WbApiEmpleado\WbApiEmpleado.csproj", "{B26CD7F4-2ADA-4FB1-AD65-A9355D1E61E0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentacion", "Presentacion", "{94445B7E-72C6-46B5-8972-3AF5275330BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrasnporteAdmin", "TrasnporteAdmin\TrasnporteAdmin.csproj", "{8BB3C780-A2E0-4C8B-83A8-B4DC71B45D3E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BD", "BD", "{BE4123D7-1DD7-4744-82A5-4BACE85FA238}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrasnporteAdmin", "TrasnporteAdmin\TrasnporteAdmin.csproj", "{8BB3C780-A2E0-4C8B-83A8-B4DC71B45D3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
